@@ -1,0 +1,14 @@
+<h2>valuation editor</h2>
+
+<div *ngFor="let valuation of valuations">
+    <div>
+        <button (click)="updateCurrentValuation(valuation.id)">{{valuation.id}}</button>
+    </div>
+</div>
+
+<div [ngSwitch]="selectedValuation.type">
+    <app-cash-valuation-editor [valuation]="selectedValuation" *ngSwitchCase="ValuationType.Cash">
+    </app-cash-valuation-editor>
+    <app-asset-valuation-editor [valuation]="selectedValuation" *ngSwitchCase="ValuationType.Asset">
+    </app-asset-valuation-editor>
+</div>
